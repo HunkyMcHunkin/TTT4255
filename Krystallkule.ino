@@ -49,6 +49,4 @@ void loop() {
         break;
     }
   }
-
-  delay(1000);
 }
