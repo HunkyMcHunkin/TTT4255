@@ -19,7 +19,7 @@ void setup() {
 
 void loop() {
   //Her skrives koden som kjøres i loop når programmet kjøres. 
-  //Hvis knappentrykkes ned skal koden i "if"-krøllparantese kjøres. 
+  //Hvis knappen trykkes ned skal koden i "if"-krøllparantese kjøres. 
   //Her settes først alle lysdiodene til "HIGH", dvs at de "slåes på".
   //Deretter slåes de av en etter en, med et mellomrom på 1000ms.
   if (digitalRead(buttonPin) == HIGH) {
