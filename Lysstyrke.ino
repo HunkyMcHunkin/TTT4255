@@ -1,6 +1,8 @@
+  //Variablene defineres og tildeles en pin på arduinoen.
   const int ledPin = 3;
   const int buttonPin = 13;
 
+  //
   int var = 0;
   int x = 20;
 
