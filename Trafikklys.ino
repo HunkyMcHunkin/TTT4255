@@ -1,78 +1,68 @@
 //Vi tar først å definerer alle variablene.
+//Vi gir disse variablene navn som sier hvilken komponent de tilhører.
+//Variablene blir gitt en heltallsverdi (int) som er inngangspinnen de skal kobles til på mikrokontrolleren. (Se figurene i trinn 2)
+//const betyr constant og betyr at variabelen ikke kan endres.
   const int greenPin = 2;
   const int yellowPin = 3;
   const int redPin = 4;
   const int buttonPin = 8;
 
-//Gir portene navn som sier hvilken lysdiode de tilhører. Disse er konstante, dvs at de ikke kan endres når programmet kompilerer. 
-//Datatypen "int" tilsier at den tilgitte verdien er et heltall (integer).
-
-  bool redLight = true;
+  bool redLight = true;       //redLight er av datatypen bool. Denne datatypen kan inneholde "true" eller "false".
   int waitTime = 200;
 
-//Gir redLight verdien "true", vha datatypen bool som kan innholde enten "true" eller "false".
-//Ventetiden blir satt til 200 milisekunder (???). 
 
+//Oppsett før kjøring av selve koden i loop().
 void setup() {
-  //Her får variablene definert sin funksjon i arduinoen. 
-  pinMode(greenPin, OUTPUT);
+  //pinMode(pin, mode) er en funksjon som konfigurerer en pin til å oppføre seg som inngang/utgang (INPUT/OUTPUT).
+  pinMode(greenPin, OUTPUT);  
   pinMode(yellowPin, OUTPUT);
   pinMode(redPin, OUTPUT);
-  pinMode(buttonPin, INPUT);
-  //De tre lysdiodene blir satt til å være output, mens knappen blir input. 
+  pinMode(buttonPin, INPUT); 
   
-  digitalWrite(redPin, HIGH);
-  //Sier at redPin skal være "true" når inngangen er logisk høy. 
+  //digitalWrite(pin, value) er en funksjon som endrer tilstanden til en pin, enten til HIGH eller LOW.
+  //HIGH: Påtrykt spenning. LOW: Ingen spenning.
+  digitalWrite(redPin, HIGH); 
 }
 
-
 //Her kommer selve loopen, det er den som kjører når programmet starter.
-
 void loop() {
-  //Hvis knappen trykkes ned, så vil første "if"-argunent kjøre. 
-  if (digitalRead(buttonPin) == HIGH) {
+  //digitalRead(pin) er en funksjon som gir tilbake verdien til pinen (HIGH/LOW).
+  //Når knappen (button) er trykket på, går det strøm og spenning igjennom knappen.
+  //digitalRead(buttonPin) gir da HIGH når knappen trykkes på.
+  //Hvis betingelsene inne i if-parantesen stemmer, dvs at knappen trykkes ned, vil koden inne i krøllparantesen kjøre.
+  if (digitalRead(buttonPin) == HIGH) { 
     
-    //Hvis det røde lyset er det som lyser fra før, altså at "redLight" er "true", vil denne koden kjøre.
+    //Hvis betingelsene inne i if-parantesen stemmer, dvs at "redLight" er "true", vil koden inne i krøllparantesen kjøre.
     if (redLight) {
 
-      digitalWrite(yellowPin, HIGH);
-      //Det gule lyset "slåes på".
-      digitalWrite(redPin, LOW);
-      //Det røde lyset "slåes av".
-      
+      digitalWrite(yellowPin, HIGH); //"yellowPin" blir påtrykt spenning.
+      digitalWrite(redPin, LOW);     //"redPin" blir ikke påtrykt spenning.
 
+      //delay(milliseconds) er en funksjon som pauser programmet. Hvor lenge programmet blir pauset er avhengig av parameteren "milliseconds".
       delay(waitTime);
-      //Venter "waitTime" (200ms) før programmet fortsetter.
 
-      digitalWrite(greenPin, HIGH);
-      //Det grønne lyset slåes på.
-      digitalWrite(yellowPin, LOW);
-      //Det gule lyset slåes av.
+      digitalWrite(greenPin, HIGH); //Den grønne lysdioden slås på.
+      digitalWrite(yellowPin, LOW); //Den gule lysdioden slås av.
 
-      redLight = false;
       //"redLight" settes til false, slik at neste gang knappen trykkes, vil lysene gå fra grønn til rød.
-      
+      redLight = false;
     }
-    else {
+    else { //Hvis betingelsene til if-testen ikke ble oppfylt -> else-koden kjøres.
       
       digitalWrite(yellowPin, HIGH);
-      //Det gule lyset "slåes på".
       digitalWrite(greenPin, LOW);
-      //Det grønne lyset "slåes av".
 
       delay(waitTime);
-      //Venter 200ms.
 
       digitalWrite(redPin, HIGH);
       //Det røde lyset "slåes på".
       digitalWrite(yellowPin, LOW);
       //Det gule lyset "slåes av".
 
+      //"redLight" settes til true, slik at neste gang knappen trykkes, vil lysene gå fra rød til grønn.
       redLight = true;
-      //Neste gang vil lysene gå fra rød til grønn.
     }
   }
 
   delay(waitTime);
-  //Holder igjen, slik at man ikke kan trykke på knappen igjen før det er gått 200 ms (den vil hvertfall ikke reagere før den tid). 
 }
