@@ -55,9 +55,7 @@ void loop() {
       delay(waitTime);
 
       digitalWrite(redPin, HIGH);
-      //Det røde lyset "slåes på".
       digitalWrite(yellowPin, LOW);
-      //Det gule lyset "slåes av".
 
       //"redLight" settes til true, slik at neste gang knappen trykkes, vil lysene gå fra rød til grønn.
       redLight = true;
