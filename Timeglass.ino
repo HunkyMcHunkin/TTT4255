@@ -1,19 +1,27 @@
-  const int startLed = 2;
-  const int buttonPin = 13;
+  
+//Variablene defineres og tildeles en pin på arduinoen.
+const int startLed = 2;
+const int buttonPin = 13;
 
-  const int numberOfLed = 6;
+//Antallet lysdioder som skal være med.
+const int numberOfLed = 6;
 
 void setup() {
-  // put your setup code here, to run once:
+  //Dette er bare en enkel måte å sette hver pin som er koblet opp til en diode til å være output. 
+  //Den første pinnen er "startLed", altså 2, den neste er 3 o.s.v.
   for (int i = 0; i < numberOfLed; i++) {
     pinMode(startLed + i, OUTPUT);
   }
-
+  
+  //Knappen blir satt til å være input. 
   pinMode(buttonPin, INPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  //Her skrives koden som kjøres i loop når programmet kjøres. 
+  //Hvis knappentrykkes ned skal koden i "if"-krøllparantese kjøres. 
+  //Her settes først alle lysdiodene til "HIGH", dvs at de "slåes på".
+  //Deretter slåes de av en etter en, med et mellomrom på 1000ms.
   if (digitalRead(buttonPin) == HIGH) {
     for (int i = 0; i < numberOfLed; i++) {
       digitalWrite(startLed + i, HIGH);
@@ -23,5 +31,6 @@ void loop() {
       digitalWrite(startLed + i, LOW);
     }
   }
+  //Når koden over er ferdig må en vente 10 ms før knappen kan registrere et nytt trykk. 
   delay(10);
 }
