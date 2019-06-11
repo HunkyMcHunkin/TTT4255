@@ -20,8 +20,8 @@ void setup() {
 void loop() {
   //Her skrives koden som kjøres i loop når programmet kjøres. 
   //Hvis knappen trykkes ned skal koden i "if"-krøllparantese kjøres. 
-  //Her settes først alle lysdiodene til "HIGH", dvs at de "slåes på".
-  //Deretter slåes de av en etter en, med et mellomrom på 1000ms.
+  //Her settes først alle lysdiodene til "HIGH", dvs at de "slås på".
+  //Deretter slås de av en etter en, med et mellomrom på 1000ms.
   if (digitalRead(buttonPin) == HIGH) {
     for (int i = 0; i < numberOfLed; i++) {
       digitalWrite(startLed + i, HIGH);
@@ -31,6 +31,6 @@ void loop() {
       digitalWrite(startLed + i, LOW);
     }
   }
-  //Når koden over er ferdig må en vente 10 ms før knappen kan registrere et nytt trykk. 
+
   delay(10);
 }
