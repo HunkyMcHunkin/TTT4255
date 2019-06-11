@@ -1,3 +1,5 @@
 # TTT4255
 
-Test
+Dette er en samling av kode brukt til introduksjonsukene i TTT4255.
+
+##
