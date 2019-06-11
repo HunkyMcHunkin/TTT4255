@@ -16,6 +16,9 @@ void loop() {
   // put your main code here, to run repeatedly:
   if (digitalRead(buttonPin) == HIGH) {
     for (int i = 0; i < numberOfLed; i++) {
+      digitalWrite(startLed + i, HIGH);
+    }
+    for (int i = 0; i < numberOfLed; i++) {
       delay(1000);
       digitalWrite(startLed + i, LOW);
     }
