@@ -13,8 +13,8 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   sensorValue = analogRead(sensorPin);
-  voltage = sensorValue * (5.0/1024);
-  temperature = (voltage - 0.5) * 100;
+  voltage = sensorValue * (5000/1024);
+  temperature = (voltage/10);
 
   Serial.print("sensorValue: ");
   Serial.print(sensorValue);
