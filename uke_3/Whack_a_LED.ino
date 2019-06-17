@@ -38,10 +38,10 @@ void loop() {
     s = 0;    
   }
   if (y < 300){
-    s = 2;
+    s = 1;
   }
   if (y > 800){
-    s = 1;
+    s = 2;
   }
 
   digitalWrite(ledPins[rNum], LOW); //slår av lysdioden
