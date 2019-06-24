@@ -13,10 +13,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if (Serial.available() > 0) {
+  if (Serial.available() > 1) {
     data = Serial.parseInt();
-    if (data <= 0) {
-      data = 0;
+    if (data <= 5) {
+      data = 5;
     }
     if (data >= 180) {
       data = 180;
