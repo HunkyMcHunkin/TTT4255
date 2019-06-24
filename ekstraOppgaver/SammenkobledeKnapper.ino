@@ -16,7 +16,11 @@ void loop() {
   int num = analogRead(input);
   Serial.println(num);
 
-  if (100 < num && num < 1023) {
+  if (100 < num && num < 500) {
+    digitalWrite(led1, HIGH);
+    digitalWrite(led2, LOW);
+  }
+  if (500 < num && num < 1023) {
     digitalWrite(led1, LOW);
     digitalWrite(led2, HIGH);
   }
